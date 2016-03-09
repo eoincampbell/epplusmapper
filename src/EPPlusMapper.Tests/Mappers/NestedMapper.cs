@@ -11,9 +11,16 @@ namespace EPPlusMapper.Tests.Mappers
     {
         public NestedMapper()
         {
-            AddMember("Custom Id", x => x.Id);
-            AddMember("Custom First Name", x => x.First.Name);
-            AddMember("Custom Second Name", x => x.Second.Name);
+            AddMember("Nested Id", x => x.Id);
+            AddMember("Oldest Name", x =>
+            
+                x.First.DateOfBirth > x.Second.DateOfBirth
+                    ? x.First.Name
+                    : x.Second.Name
+            );
+            //AddMember("Oldest DOB", x => x.First.DateOfBirth);
+            //AddMember("Second Name", x => x.Second.Name);
+            //AddMember("Second DOB", x => x.Second.DateOfBirth);
         }
     }
 }

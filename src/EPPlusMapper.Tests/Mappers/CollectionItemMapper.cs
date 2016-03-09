@@ -13,4 +13,20 @@ namespace EPPlusMapper.Tests.Mappers
             AddMember("Child Names", x => string.Join(",", x.Children.Select(y => y.Name)));
         }
     }
+
+
+    //public class RecordMapper : Mapper<object>
+    //{
+    //    public RecordMapper(object process) : base()
+    //    {
+    //        AddMember("OurReference", x => x.ToString());
+
+    //        foreach (CalcRefItemMeta i in process.CalcItems)
+    //        {
+    //            AddMember(i.Name, x => x.CalcItems[x.SchemaNamespace]);
+    //        }
+
+
+    //    }
+    //}
 }

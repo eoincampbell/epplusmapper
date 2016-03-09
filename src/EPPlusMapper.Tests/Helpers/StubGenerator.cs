@@ -15,7 +15,7 @@ namespace EPPlusMapper.Tests.Helpers
             {
                 Id = 1,
                 Name = "Eoin",
-                DateOfBirth = new DateTime(1982, 1, 1)
+                DateOfBirth = new DateTime(1982, 1, 10)
             };
         }
 

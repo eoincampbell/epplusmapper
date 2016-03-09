@@ -16,16 +16,19 @@ namespace EPPlusMapper.Core
 
     public abstract class Mapper<T> where T : new()
     {
-        private readonly Dictionary<string, Expression<Func<T, object>>> mappingInfo;
+        private readonly Dictionary<
+            string, 
+            Expression<Func<T, object>>> mappingInfo;
 
+        
         protected Mapper()
         {
             mappingInfo = new Dictionary<string, Expression<Func<T, object>>>();
         }
 
-        public void AddMember(string header, Expression<Func<T, object>> memberExpression)
+        protected void AddMember(string header, Expression<Func<T, object>> memberExpression)
         {
-            Debug.WriteLine($"{memberExpression.Name} - {memberExpression.Body}");
+            //Debug.WriteLine($"{memberExpression.Name} - {memberExpression.Body}");
             mappingInfo.Add(header, memberExpression);
         }
 
@@ -40,7 +43,7 @@ namespace EPPlusMapper.Core
                 foreach (var inf in mappingInfo)
                 {
                     var compiled = inf.Value.Compile();
-                    ((IDictionary<string,object>)obj).Add(inf.Key, compiled(input));
+                    ((IDictionary<string, object>)obj).Add(inf.Key, compiled(input));
                 }
 
                 results.Add(obj);
